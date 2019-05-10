@@ -21,10 +21,10 @@ class Bot {
         this.users = await this.getUserList();
         this.jenkinsStatus = jenkinsStatus;
 
-        if(this.conversations) {
+        if (this.conversations) {
             console.log('Successfully got the conversations list');
         }
-        if(this.users) {
+        if (this.users) {
             console.log('Successfully got the user list');
         }
 
@@ -35,26 +35,28 @@ class Bot {
 
         rtm.on('message', this.receiveMessage.bind(this));
     }
-    
+
     receiveMessage(event) {
         let message = event.text,
             user = this.users[event.user],
             conversationId = event.channel;
 
-        console.log(`Received: ${message}\nFrom user: ${user}\nIn conversation: ${this.conversations[conversationId]}\n-------------`);
-        if(this.isGmMessage(message)) {
-            this.sendGmMessage(user, conversationId);
-        } else if(this.isJenkinsStatusMessage(message)) {
-            this.sendJenkinsStatusMessage(user, conversationId);
+        if (message) {
+            console.log(`Received: ${message}\nFrom user: ${user}\nIn conversation: ${this.conversations[conversationId]}\n-------------`);
+            if (this.isGmMessage(message)) {
+                this.sendGmMessage(user, conversationId);
+            } else if (this.isJenkinsStatusMessage(message)) {
+                this.sendJenkinsStatusMessage(user, conversationId);
+            }
         }
     }
 
     async sendGmMessage(user, conversationId) {
         let jenkinsStatus = await this.jenkinsStatus.getUpdatedStatus();
-        let hasFailedTests = jenkinsStatus.filter( job => job.status !== 'blue').length > 0;
+        let hasFailedTests = jenkinsStatus.filter(job => job.status !== 'blue').length > 0;
 
         let message = `Bom dia ${user}, você criou uma GM `;
-        if(hasFailedTests) {
+        if (hasFailedTests) {
             message += 'com os testes *QUEBRADOS!*\n';
         } else {
             message += 'e todos os testes estão passando!\n';
