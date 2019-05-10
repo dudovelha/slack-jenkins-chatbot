@@ -1,0 +1,24 @@
+{
+  "name": "slack-jenkins-chatbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dudovelha/slack-jenkins-chatbot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dudovelha/slack-jenkins-chatbot/issues"
+  },
+  "homepage": "https://github.com/dudovelha/slack-jenkins-chatbot#readme",
+  "dependencies": {
+    "@slack/rtm-api": "^5.0.1",
+    "@slack/web-api": "^5.0.1",
+    "jenkins": "^0.25.0"
+  }
+}
