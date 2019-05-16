@@ -19,6 +19,7 @@
   "dependencies": {
     "@slack/rtm-api": "^5.0.1",
     "@slack/web-api": "^5.0.1",
-    "jenkins": "^0.25.0"
+    "jenkins": "^0.25.0",
+    "moment": "^2.24.0"
   }
 }
